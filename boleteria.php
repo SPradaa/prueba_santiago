@@ -28,10 +28,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
             echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
             echo '<script>window.location="boleteria.php"</script>';
         } else {
-            $insertSQL = $con->prepare("INSERT INTO usuarios(documento, id_doc, nombre, apellido, id_eps, id_rh, telefono, correo, id_ciudad, direccion, password, id_rol, id_estado) VALUES('$documento', '$id_doc', '$nombre', '$apellido', '$id_eps', '$id_rh', '$telefono', '$correo', '$id_ciudad', '$direccion', '$pass_cifrado', '$id_rol', '$estado')");
+            $insertSQL = $con->prepare("INSERT INTO entrada(docu, nombre, telefono, correo, fecha_boleta, id_comida, id_juego ) VALUES('$documento', '$nombre', '$telefono', '$email', '$date', '$comida', '$juego')");
             $insertSQL->execute();
-            echo '<script> alert("REGISTRO EXITOSO");</script>';
-            echo '<script>window.location="login.html"</script>';
+            echo '<script> alert("Boleta Adquirida Exitosamente");</script>';
+            echo '<script>window.location="index.html"</script>';
 
         }
 }
@@ -68,8 +68,8 @@ https://templatemo.com/tm-550-diagoona
                     <div class="tm-site-header media">
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
-                            <h1 class="tm-sitename text-uppercase">diagoona</h1>
-                            <p class="tm-slogon">new bootstrap template</p>
+                        <h1 class="tm-sitename text-uppercase">TECNOPARK</h1>
+                            <p class="tm-slogon">Experiencias y diversion </p>
                         </div>        
                     </div>
                 </div>
@@ -85,9 +85,7 @@ https://templatemo.com/tm-550-diagoona
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="index.html">Home</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="info.php">Informacion</a>
-                                </li>
+                               
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="reporte.php">Reporte</a>
                                 </li>                            
@@ -110,19 +108,28 @@ https://templatemo.com/tm-550-diagoona
                         <form id="contact-form" action="" method="POST">
                             <div class="form-group mb-4">
                                 <input type="number" name="documento" class="form-control" placeholder="documento"  id="documento" required="" />
+                                <span id="documentoError" style="color: red;"></span>
                             </div>
                             <div class="form-group mb-4">
                                 <input type="text" name="name" class="form-control" placeholder="Nombre" id="nombre" required="" />
+                                <span id="nombreError" style="color: red;"></span>
+
                             </div>
                             <div class="form-group mb-4">
                                 <input type="text" name="telefono" class="form-control" placeholder="telefono"  id="telefono" required="" />
+                                <span id="telefonoError" style="color: red;"></span>
+
                             </div>
                             <div class="form-group mb-4">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required="" />
+                                <input type="email" name="email" class="form-control" placeholder="Email" id="email" required="" />
+                                <span id="emailError" style="color: red;"></span>
+
                             </div>
                             <div class="form-group mb-4">
                                 <label for="">Escoja una fecha Para visitarnos!</label>
-                                <input type="date" name="fecha" class="form-control" placeholder="fecha" required="" />
+                                <input type="date" name="fecha" class="form-control" placeholder="fecha" id="fecha" required="" />
+                               
+
                             </div>
                             
                           
@@ -130,7 +137,7 @@ https://templatemo.com/tm-550-diagoona
                             <label for="">Seleccione su comida</label>
                             <div class="form-group mb-4">
                              
-                            <select name="comida">
+                            <select name="comida" id="comida"  required >
                 <option value="">comidas</option>
 
                 <?php
@@ -149,7 +156,7 @@ https://templatemo.com/tm-550-diagoona
 
                             <div class="form-group mb-4">
                                 <label for="">Seleccione su atraccion principal</label>
-                            <select name="juego">
+                            <select name="juego" id="juegos" required >
                 <option value="">Juegos</option>
 
                 <?php
@@ -202,5 +209,6 @@ https://templatemo.com/tm-550-diagoona
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
+    <script src="js/validaciones.js" ></script>
 </body>
 </html>
