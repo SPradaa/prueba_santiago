@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Diagoona - Services Page</title>
+    <title>Diagoona - About Page</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
@@ -45,13 +45,13 @@ https://templatemo.com/tm-550-diagoona
                                     <a class="nav-link tm-nav-link" href="index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="about.html">About</a>
+                                    <a class="nav-link tm-nav-link" href="Info.php">Informacion</a>
                                 </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="services.html">Services <span class="sr-only">(current)</span></a>
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="reporte.php">reporte</a>
                                 </li>                            
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="contact.html">Contact</a>
+                                    <a class="nav-link tm-nav-link" href="boleteria.php">Boleteria</a>
                                 </li>
                             </ul>                            
                         </div>                        
@@ -62,29 +62,33 @@ https://templatemo.com/tm-550-diagoona
             <div class="tm-row">
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
-                    <section class="tm-content">
-                        <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
-                            <img src="img/services-1.jpg" alt="Image" class="tm-service-img">
-                            <div class="media-body tm-service-text">
-                                <h2 class="mb-4 tm-content-title">Best Services for you</h2>
-                                <p>Our template is simple and effective. This is an alternating simple content with a squared size image. Menu hover is #9CC and text #FFF</p>
+                    <section class="tm-content tm-about">
+                        <h2 class="mb-5 tm-content-title">About Diagoona Template</h2>
+                        <hr class="mb-4">
+                        <div class="media my-3">
+                            <i class="fas fa-shapes fa-3x p-3 mr-4"></i>
+                            <div class="media-body">
+                                <p>Cras quam urna, interdum at posuere ac, tincidunt ut ipsum. Nam condimentum placerat enim. Nullam euismod sapien.</p>
                             </div> 
                         </div>
-                        <div class="media my-3 mb-5 tm-service-media">                            
-                            <div class="media-body tm-service-text">
-                                <h2 class="mb-4 tm-content-title">Customer Satisfaction</h2>
-                                <p>Feel free to contact TemplateMo for any kind of question. If you wish to support us, you can make a PayPal donation. Thank you.</p>
+                        <div class="media my-3">
+                            <i class="fas fa-draw-polygon fa-3x p-3 mr-4"></i>
+                            <div class="media-body">
+                                <p>Nunc id hendrerit nunc. Etiam ultricies arcu sem, vel dapibus lacus lacinia quis. Nunc auctor placerat nisi ac ultrices.</p>
                             </div> 
-                            <img src="img/services-2.jpg" alt="Image" class="tm-service-img-r">
                         </div>
-                        <div class="media my-3 tm-service-media tm-service-media-img-l">
-                            <img src="img/services-3.jpg" alt="Image" class="tm-service-img">
-                            <div class="media-body tm-service-text">
-                                <h2 class="mb-4 tm-content-title">Template Usage</h2>
-                                <p>You are free to use this template for your website either commercial or personal.</p>
-                                <p>You are NOT allowed to redistribute this template ZIP file for a download purpose on any template collection website.</p>
+                        <div class="media my-3">
+                            <i class="fab fa-creative-commons-share fa-3x p-3 mr-4"></i>
+                            <div class="media-body">
+                                <p>Vestibulum imperdiet hendrerit nibh. Integer sit amet lacus et nunc auctor tincidunt eu ac sapien. Ut suscipit velit eget faucibus finibus.</p>
                             </div> 
-                        </div>                      
+                        </div>
+                        <div class="media my-3">
+                            <i class="fas fa-bookmark fa-3x p-3 mr-4"></i>
+                            <div class="media-body">
+                                <p>Prasent eget enim vitae sapien egestas aliquet non quis neque. Duis pharetra varius massa, ut bibendum tortor sodales ac.</p>
+                            </div> 
+                        </div>                        
                     </section>
                 </main>
             </div>
@@ -104,7 +108,7 @@ https://templatemo.com/tm-550-diagoona
                     
                     | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">TemplateMo</a></p>
                 </footer>
-            </div>  
+            </div>   
         </div>        
 
         <!-- Diagonal background design -->
@@ -119,5 +123,4 @@ https://templatemo.com/tm-550-diagoona
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
 </body>
-
 </html>

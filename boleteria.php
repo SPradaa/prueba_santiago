@@ -1,3 +1,44 @@
+<?php
+
+require_once("db/conexion.php");
+$db = new Database();
+$con = $db->conectar();
+session_start();
+?>
+
+
+<?php
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
+    $documento = $_POST['documento'];
+    $nombre = $_POST['name'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
+    $date = $_POST['fecha'];
+    $comida = $_POST['comida'];
+    $juego = $_POST['juego'];
+
+    
+
+    // $sql = $con->prepare("SELECT * FROM usuarios WHERE documento='$documento'");
+    // $sql->execute();
+    // $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($documento == "" || $nombre == "" || $telefono == "" || $email == "" || $date == "" || $comida == "" || $juego == "") {
+            echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
+            echo '<script>window.location="boleteria.php"</script>';
+        } else {
+            $insertSQL = $con->prepare("INSERT INTO usuarios(documento, id_doc, nombre, apellido, id_eps, id_rh, telefono, correo, id_ciudad, direccion, password, id_rol, id_estado) VALUES('$documento', '$id_doc', '$nombre', '$apellido', '$id_eps', '$id_rh', '$telefono', '$correo', '$id_ciudad', '$direccion', '$pass_cifrado', '$id_rol', '$estado')");
+            $insertSQL->execute();
+            echo '<script> alert("REGISTRO EXITOSO");</script>';
+            echo '<script>window.location="login.html"</script>';
+
+        }
+}
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,13 +86,13 @@ https://templatemo.com/tm-550-diagoona
                                     <a class="nav-link tm-nav-link" href="index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="about.html">About</a>
+                                    <a class="nav-link tm-nav-link" href="info.php">Informacion</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="services.html">Services</a>
+                                    <a class="nav-link tm-nav-link" href="reporte.php">Reporte</a>
                                 </li>                            
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="contact.html">Contact <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link tm-nav-link" href="boleteria.php">Boleteria <span class="sr-only">(current)</span></a>
                                 </li>
                             </ul>                            
                         </div>                        
@@ -65,24 +106,68 @@ https://templatemo.com/tm-550-diagoona
                     <section class="tm-content tm-contact">
                         <h2 class="mb-4 tm-content-title">Boleteria</h2>
                         <p class="mb-85">ingresa tus datos para obtener tu boleta, ademas ayudanos dejandonos tu opinion sobre la comida y el juego que mas es de tu interes para brindarte una mejor experiencia de usuario</p>
+                       
                         <form id="contact-form" action="" method="POST">
                             <div class="form-group mb-4">
-                                <input type="number" name="name" class="form-control" placeholder="documento" required="" />
+                                <input type="number" name="documento" class="form-control" placeholder="documento"  id="documento" required="" />
                             </div>
                             <div class="form-group mb-4">
-                                <input type="text" name="name" class="form-control" placeholder="Name" required="" />
+                                <input type="text" name="name" class="form-control" placeholder="Nombre" id="nombre" required="" />
                             </div>
                             <div class="form-group mb-4">
-                                <input type="text" name="telefono" class="form-control" placeholder="telefono" required="" />
+                                <input type="text" name="telefono" class="form-control" placeholder="telefono"  id="telefono" required="" />
                             </div>
                             <div class="form-group mb-4">
                                 <input type="email" name="email" class="form-control" placeholder="Email" required="" />
                             </div>
                             <div class="form-group mb-4">
+                                <label for="">Escoja una fecha Para visitarnos!</label>
                                 <input type="date" name="fecha" class="form-control" placeholder="fecha" required="" />
                             </div>
+                            
+                          
+                    
+                            <label for="">Seleccione su comida</label>
+                            <div class="form-group mb-4">
+                             
+                            <select name="comida">
+                <option value="">comidas</option>
+
+                <?php
+                $control = $con->prepare("SELECT * from comida");
+                $control->execute();
+                while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<option value=" . $fila['id_comida'] . ">"
+                        . $fila['comida'] . "</option>";
+                }
+                ?>
+            </select>
+                            </div>
+
+                                    <!-- division marcada entre juegos y comidas -->
+
+
+                            <div class="form-group mb-4">
+                                <label for="">Seleccione su atraccion principal</label>
+                            <select name="juego">
+                <option value="">Juegos</option>
+
+                <?php
+                $control = $con->prepare("SELECT * from juegos");
+                $control->execute();
+                while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<option value=" . $fila['id_juego'] . ">"
+                        . $fila['juegos'] . "</option>";
+                }
+                ?>
+            </select>
+                            </div>
+
+
+
                             <div class="text-right">
-                                <button type="submit" class="btn btn-big btn-primary">Send It</button>
+                            <input type="submit" name="validar" value="Adquirir">
+            <input type="hidden" name="MM_insert" value="formreg">
                             </div>
                         </form>
                     </section>
