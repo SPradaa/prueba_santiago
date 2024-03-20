@@ -1,5 +1,4 @@
 <?php
-
 require_once("db/conexion.php");
 $db = new Database();
 $con = $db->conectar();
@@ -10,34 +9,31 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Reporte de TECNOPARK</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
- <h1>Reporte de TECNOPARK</h1>
- <?php
-
-
-// Consulta SQL para obtener los datos de la tabla
-$sql = "SELECT * FROM entrada";
-$resultado = $conexion->query($sql);
-
-// Verificar si la consulta devuelve resultados
-if ($resultado->num_rows > 0) {
-    // Imprimir los datos en una tabla HTML
-    echo "<table border='1'>
-            <tr>
-                <th>id_entrada</th>
-                <th>docu</th>
-                <th>nombre</th>
-                <th>telefono</th>
-                <th>correo</th>
-                <th>fecha_boleta</th>
-                <th>id_comida</th>
-                <th>id_juego</th>
-            </tr>";
-
-    // Iterar sobre los resultados y mostrar cada fila en la tabla
-    while ($fila = $resultado->fetch_assoc()) {
+<h1 class="text-center mt-5">Reporte de TECNOPARK</h1>
+<?php
+$sql = "SELECT * FROM entrada ORDER BY fecha_boleta DESC";
+$resultado = $con->query($sql);
+if ($resultado->rowCount() > 0) {
+    echo "<table class='table table-bordered mt-5'>
+            <thead class='thead-dark'>
+                <tr>
+                    <th>id_entrada</th>
+                    <th>docu</th>
+                    <th>nombre</th>
+                    <th>telefono</th>
+                    <th>correo</th>
+                    <th>fecha_boleta</th>
+                    <th>id_comida</th>
+                    <th>id_juego</th>
+                </tr>
+            </thead>
+            <tbody>";
+    while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
         echo "<tr>";
         echo "<td>" . $fila['id_entrada'] . "</td>";
         echo "<td>" . $fila['docu'] . "</td>";
@@ -49,15 +45,13 @@ if ($resultado->num_rows > 0) {
         echo "<td>" . $fila['id_juego'] . "</td>";
         echo "</tr>";
     }
-    echo "</table>";
+    echo "</tbody></table>";
 } else {
-    echo "No se encontraron resultados.";
+    echo "<p class='text-center mt-5'>No se encontraron resultados.</p>";
 }
-
-// Cerrar la conexión a la base de datos
-
+$con = null;
 ?>
-
-
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
